@@ -66,7 +66,7 @@
 	
 	<target name="clean" description="Clean up">
 		<delete dir="${dist.dir}" />
-		<delete includeemptydirs="true">
+		<delete includeemptydirs="true" failonerror="false">
 			<fileset dir="${build.dir}" includes="**/*" />
 		</delete>
 	</target>
