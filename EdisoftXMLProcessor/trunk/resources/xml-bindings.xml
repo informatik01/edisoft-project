@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+	version="2.4" package-name="ee.edisoft.edi.model">
+	<java-types>
+		<java-type name="Invoice">
+			<xml-root-element name="Document" />
+			<java-attributes>
+				<xml-element java-attribute="uid" xml-path="Document-Invoice/Document-Header/DocumentUID/text()" />
+				<xml-element java-attribute="documentType" xml-path="DocumentSettings/DocumentType/text()" />
+				<xml-element java-attribute="receiverSystemType" xml-path="DocumentSettings/ReceiverSystemType/text()" />
+				<xml-element java-attribute="documentNumber" xml-path="DocumentSettings/DocumentNumber/text()" />
+				<xml-element java-attribute="documentDate1" xml-path="DocumentSettings/DocumentDate1/text()">
+					<xml-java-type-adapter value="ee.edisoft.edi.xml.bind.DateAdapter" />
+				</xml-element>
+				<xml-element java-attribute="documentDate2" xml-path="DocumentSettings/DocumentDate2/text()">
+					<xml-java-type-adapter value="ee.edisoft.edi.xml.bind.DateAdapter" />
+				</xml-element>
+				<xml-element java-attribute="senderILN" xml-path="DocumentSettings/Sender/ILN/text()" />
+				<xml-element java-attribute="senderCodeByReceiver" xml-path="DocumentSettings/Sender/CodeByReceiver/text()" />
+				<xml-element java-attribute="senderName" xml-path="DocumentSettings/Sender/Name/text()" />
+				<xml-element java-attribute="senderAddress" xml-path="DocumentSettings/Sender/Address/text()" />
+				<xml-element java-attribute="receiverILN" xml-path="DocumentSettings/Receiver/ILN/text()" />
+				<xml-element java-attribute="receiverCodeByReceiver" xml-path="DocumentSettings/Receiver/CodeByReceiver/text()" />
+				<xml-element java-attribute="receiverName" xml-path="DocumentSettings/Receiver/Name/text()" />
+				<xml-element java-attribute="receiverAddress" xml-path="DocumentSettings/Receiver/Address/text()" />
+				<xml-element java-attribute="details" type="ee.edisoft.edi.model.InvoiceDetails"
+					container-type="java.util.ArrayList" xml-path="Document-Invoice/Invoice-Lines/Line/Line-Item" />
+			</java-attributes>
+		</java-type>
+		<java-type name="InvoiceDetails">
+			<java-attributes>
+				<xml-element java-attribute="lineNumber" xml-path="LineNumber/text()" />
+				<xml-element java-attribute="supplierItemCode" xml-path="SupplierItemCode/text()" />
+				<xml-element java-attribute="itemDescription" xml-path="ItemDescription/text()" />
+				<xml-element java-attribute="invoiceQuantity" xml-path="InvoiceQuantity/text()" />
+				<xml-element java-attribute="invoiceUnitNetPrice" xml-path="InvoiceUnitNetPrice/text()" />
+			</java-attributes>
+		</java-type>
+	</java-types>
+</xml-bindings>

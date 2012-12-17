@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="EdisoftXMLProcessor" basedir="." default="build">
+	
+	<property file="build.properties" />
+	
+	<!-- Setting the classpath for the project -->
+	<path id="project.classpath">
+		<pathelement location="${build.dir}" />
+		<fileset dir="${lib.dir}" />
+	</path>
+	
+	<target name="build" depends="clean" description="Building project">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" debug="on" includeAntRuntime="false">
+			<classpath refid="project.classpath" />
+			<compilerarg value="-Xlint:none" />
+		</javac>
+		<!-- Copying all properties files to classpath -->
+		<copy todir="${build.dir}">
+			<fileset dir="${resource.dir}" />
+		</copy>
+	</target>
+	
+	<target name="app-init" description="Prepare for Runnable JAR file generation">
+		<copy todir="${dist.dir}">
+			<fileset dir="${build.dir}" />
+		</copy>
+		<copy todir="${dist.dir}/lib">
+			<fileset dir="${lib.dir}">
+				<exclude name="*source*" />
+				<exclude name="*src*"/>
+				<exclude name="*doc*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jar" depends="build, app-init" description="Create Runnable JAR file">
+		<jar destfile="${dist.dir}/${ant.project.name}.jar">
+			<fileset dir="${dist.dir}">
+				<exclude name="lib/" />
+			</fileset>
+			<manifest>
+				<attribute name="Main-Class" value="ee.edisoft.edi.Main"/>
+				<attribute name="Class-Path" value=". lib/eclipselink.jar lib/jaxen-1.1.4.jar                 
+					lib/jdom-2.0.4.jar lib/log4j-1.2.17.jar                        
+					lib/postgresql-9.1-902.jdbc4.jar lib/edisoft-common.jar" />
+			</manifest>
+		</jar>
+		<delete includeemptydirs="true">
+			<fileset dir="${dist.dir}">
+				<exclude name="*.jar" />
+				<exclude name="lib/" />
+			</fileset>
+		</delete>
+	</target>
+	
+	<!--
+		Starts Main App using startup script.
+		NB! Use Ctrl+C to properly close application
+			(so that ShutdownHook gets executed)
+	-->
+	<target name="start-app" description="Starts Main Application">
+		<exec dir="." executable="${terminal}" os="${os}">
+			<arg line="${start.app.arg}" />
+		</exec>
+	</target>
+	
+	<target name="clean" description="Clean up">
+		<delete dir="${dist.dir}" />
+		<delete includeemptydirs="true">
+			<fileset dir="${build.dir}" includes="**/*" />
+		</delete>
+	</target>
+</project>
