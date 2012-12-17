@@ -1,0 +1,35 @@
+<div id="header">
+	<div id="top">
+		<div id="logo">
+			<a title="Edisoft" href="<c:url value="/admin/index.jsp" />">
+				<img src="<c:url value="/img/logo.png" />" alt="Edisoft" />
+			</a>
+		</div>
+		<div id="signin-info">
+			<ul>
+				<li class="logout"><a href="<c:url value="/Logout.do" />"> Sign Out</a></li>
+				<li style="float: right; margin-right: 10px;">|</li>
+				<li class="user-name">Welcome, ${loggedInUser.firstName}!</li>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="nav-menu">
+		<ul>
+			<li><a href="<c:url value="/admin/index.jsp" />">Home</a></li>
+			<li><a href="<c:url value="/admin/invoices" />">Manage Documents</a>
+				<ul>
+					<li><a href="<c:url value="/admin/#" />">Insert Records</a></li>
+					<li><a href="<c:url value="/admin/#" />">Update Records</a></li>
+				</ul></li>
+			<li><a href="<c:url value="/admin/#" />">Manage Your Profile</a>
+				<ul>
+					<li><a href="<c:url value="/admin/#" />">Change e-mail</a></li>
+					<li><a href="<c:url value="/admin/#" />">Change password</a></li>
+					<li><a href="<c:url value="/admin/#" />">Update personal information</a></li>
+				</ul></li>
+			<li><a href="<c:url value="/admin/about.jsp" />">About Edisoft</a></li>
+		</ul>
+		<br class="clear" />
+	</div>
+</div>

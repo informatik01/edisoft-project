@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="EdisoftWebApp" basedir="." default="build">
+	
+	<property file="build.properties" />
+	
+	<!-- Setting the classpath for the project -->
+	<path id="project.classpath">
+		<pathelement location="${build.dir}/classes" />
+		<fileset dir="${lib.dir}" />
+		<fileset dir="${tomcat.lib.dir}" />
+	</path>
+	
+	<target name="build" depends="clean" description="Building project">
+		<javac srcdir="${src.dir}" destdir="${build.dir}/classes" debug="on" includeAntRuntime="false">
+			<classpath refid="project.classpath" />
+			<compilerarg value="-Xlint:none" />
+		</javac>
+		<!-- Copying all properties files to classpath -->
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${resource.dir}" />
+		</copy>
+	</target>
+	
+	<target name="webapp-init" description="Create webapp directory structure">
+		<copy todir="${dist.dir}">
+			<fileset dir="${web.dir}">
+				<exclude name="**/*source*" />
+				<exclude name="**/*src*" />
+				<exclude name="**/*doc*" />
+			</fileset>
+		</copy>
+		<copy todir="${dist.dir}/WEB-INF">
+			<fileset dir="${build.dir}" />
+		</copy>
+	</target>
+	
+	<target name="war" depends="build, webapp-init" description="Create Web Application Archive">
+		<war destfile="${dist.dir}/${ant.project.name}.war" needxmlfile="false" basedir="${dist.dir}" />
+		<delete includeemptydirs="true">
+			<fileset dir="${dist.dir}" excludes="*.war"/>
+		</delete>
+	</target>
+	
+	<target name="deploy" depends="war"
+	description="Deploy compiled and packaged Web Application to Tomcat webapps directory">
+		<copy file="${dist.dir}/${ant.project.name}.war" todir="${deploy.dir}" />
+	</target>
+	
+	<target name="start-server" description="Starts Apache Tomcat server">
+		<exec dir="${tomcat.dir}/bin" executable="${terminal}" os="${os}">
+			<arg line="${start.server.arg}" />
+		</exec>		
+	</target>
+	
+	<target name="stop-server" description="Stops Apache Tomcat server">
+		<exec dir="${tomcat.dir}/bin" executable="${terminal}" os="${os}">
+			<arg line="${stop.server.arg}" />
+		</exec>		
+	</target>
+	
+	<target name="restart-server" description="Restarts Apache Tomcat server">
+		<antcall target="stop-server" />
+		<waitfor maxwait="10" maxwaitunit="second">
+			<not>
+				<socket server="localhost" port="8080"/>
+			</not>
+		</waitfor>
+		<antcall target="start-server" />
+	</target>
+	
+	<target name="clean" description="Clean up">
+		<delete dir="${dist.dir}" />
+		<delete includeemptydirs="true">
+			<fileset dir="${build.dir}/classes" includes="**/*" />
+		</delete>
+		<delete dir="${deploy.dir}/${ant.project.name}" />
+		<delete file="${deploy.dir}/${ant.project.name}.war" />
+	</target>
+</project>

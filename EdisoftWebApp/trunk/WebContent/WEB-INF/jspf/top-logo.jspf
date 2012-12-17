@@ -1,0 +1,7 @@
+<div id="top">
+	<div id="logo">
+		<a title="Edisoft" href="<c:url value="/admin/index.jsp" />"> <img
+			src="<c:url value="/img/logo.png" />" alt="Edisoft" />
+		</a>
+	</div>
+</div>

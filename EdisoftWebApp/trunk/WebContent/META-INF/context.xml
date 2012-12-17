@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- Configuration for the Tomcat JDBC Connection Pool -->
+	<Resource	name="jdbc/EdisoftDB"
+				type="javax.sql.DataSource"
+				auth="Container"
+				factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+				driverClassName="org.postgresql.Driver"
+				url="jdbc:postgresql://localhost:5432/edisoft"
+				username="postgres"
+				password="kodupostgres"
+				maxActive="100"
+				minIdle="10"
+				initialSize="10"
+				validatonQuery="SELECT 1"
+				validationInterval="30000"
+				removeAbandoned="true"
+				removeAbandonedTimeout="60"
+				abandonWhenPercentageFull="50"
+				closeMethod="close"/>
+</Context>
