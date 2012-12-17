@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SecurePasswordEncoder" basedir="." default="build">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+
+	<target name="build" depends="clean" description="Build project">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" debug="on" includeAntRuntime="false">
+			<compilerarg value="-Xlint:none" />
+		</javac>
+	</target>
+	
+	<target name="pre-dist" depends="build" description="Prepares files for distribution">
+		<copy todir="${dist.dir}">
+			<fileset dir="${build.dir}" />
+		</copy>
+		<copy file="README.txt" todir="${dist.dir}" />
+	</target>
+	
+	<target name="dist" depends="pre-dist" description="Create Runnable JAR file">
+		<jar destfile="${dist.dir}/${ant.project.name}.jar">
+			<fileset dir="${dist.dir}" />
+			<manifest>
+				<attribute name="Main-Class" value="ee.edisoft.security.SecurePasswordEncoder" />
+				<attribute name="Class-Path" value="." />
+			</manifest>
+		</jar>
+		<delete includeemptydirs="true">
+			<fileset dir="${dist.dir}" excludes="*.jar" />
+		</delete>
+	</target>
+	
+	<target name="clean" description="Clean up">
+		<delete dir="${dist.dir}" />
+		<delete includeemptydirs="true">
+			<fileset dir="${build.dir}" includes="**/*" />
+		</delete>
+	</target>
+</project>
