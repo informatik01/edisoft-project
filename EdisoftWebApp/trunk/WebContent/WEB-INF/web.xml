@@ -64,6 +64,7 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>Secure administration area</web-resource-name>
+      <url-pattern>/login.jsp</url-pattern>
       <url-pattern>/admin/*</url-pattern>
     </web-resource-collection>
     <user-data-constraint>
