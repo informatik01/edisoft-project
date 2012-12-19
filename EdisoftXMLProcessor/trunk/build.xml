@@ -26,9 +26,7 @@
 		</copy>
 		<copy todir="${dist.dir}/lib">
 			<fileset dir="${lib.dir}">
-				<exclude name="*source*" />
-				<exclude name="*src*"/>
-				<exclude name="*doc*" />
+				<exclude name="src/"/>
 			</fileset>
 		</copy>
 	</target>

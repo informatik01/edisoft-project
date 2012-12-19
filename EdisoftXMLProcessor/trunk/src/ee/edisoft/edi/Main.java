@@ -5,15 +5,18 @@ import org.apache.log4j.Logger;
 import ee.edisoft.edi.xml.XMLProcessor;
 
 /**
- * Main Class that runs the Application.
+ * Main Class that runs the {@link XMLProcessor}.
  * 
- * @author Levan Kekelidze
- * @version 0.3 Alpha
  */
 public class Main {
 
 	private static final Logger logger = Logger.getLogger(Main.class);
 
+	/**
+	 * Custom helper method that adds a shutdown hook.
+	 * 
+	 * @param xmlProcessor The XMLProcessor to be used in shutdown hook
+	 */
 	private void addShutdownHook(final XMLProcessor xmlProcessor) {
 		final Thread currentThread = Thread.currentThread();
 		
@@ -23,14 +26,15 @@ public class Main {
 				if (xmlProcessor.isProcessingEvents()) {
 					try {
 						xmlProcessor.stopProcessingEvents();
-						currentThread.join(5000);	// wait for 5 seconds; change time as needed
+						currentThread.join(15000);	// wait for 15 seconds; change time as needed
 					} catch (InterruptedException e) {
 						currentThread.interrupt();
 					}
 					/*
 					 * If the thread is still alive, then interrupt.
-					 * From the API docs: Interrupting a thread that is not alive
-					 * need not have any effect.
+					 * From the API docs:
+					 * 		Interrupting a thread that is not alive
+					 * 		need not have any effect.
 					 */
 					currentThread.interrupt();
 				}

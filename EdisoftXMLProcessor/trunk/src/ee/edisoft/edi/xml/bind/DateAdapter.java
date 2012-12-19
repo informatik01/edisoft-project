@@ -7,11 +7,9 @@ import java.util.Date;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
- * This class is used as an XmlAdapter.
- * It is required to successfully bind dates stored in XML
- * 
- * @author Levan Kekelidze
- * @version 0.2 Alpha
+ * This class represents an XmlAdapter.
+ * It is required to successfully bind dates stored in a XML file.
+ *
  */
 public class DateAdapter extends XmlAdapter<String, Date> {
 

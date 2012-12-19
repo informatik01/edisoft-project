@@ -29,6 +29,7 @@ import java.util.Map;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+
 import org.jdom2.Document;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
@@ -41,14 +42,11 @@ import ee.edisoft.edi.util.PropertiesUtil;
 import ee.edisoft.edi.xml.bind.XOMapper;
 
 /**
- * This class represents custom XML processor, whose main purpose is to find XML
- * files in the predefined directory, transform them using XSLT file, populate
- * database with data, that was extracted from translated XML documents, and
- * watch for the creation and modification of XML documents to update database
- * records.
+ * This class represents custom XML processor,
+ * whose purpose is to find XML files in the predefined directory, transform them using XSLT file,
+ * populate the apprpriate data source with data, that was extracted from translated XML documents,
+ * and watch for the creation and modification of XML documents to update the data source records.
  * 
- * @author Levan Kekelidze
- * @version 0.3 Alpha
  */
 public class XMLProcessor {
 
@@ -63,7 +61,7 @@ public class XMLProcessor {
 	private boolean processingEvents;
 	
 	/**
-	 * Initializes XMLProcessor with data it needs for its work
+	 * Initializes XMLProcessor with data it needs for its work.
 	 */
 	private void init() {
 		PropertiesUtil propertiesUtil = new PropertiesUtil(CONFIG_FILE);
@@ -78,7 +76,7 @@ public class XMLProcessor {
 	}
 
 	/**
-	 * Does initial processing of XML documents
+	 * Does initial processing of XML documents.
 	 */
 	public void process() {
 		// Getting XSLT file
@@ -105,9 +103,9 @@ public class XMLProcessor {
 	}
 
 	/**
-	 * Acts as a directory watcher
+	 * Watches for the creation and modification of the XML files.
 	 * 
-	 * @param xsltFilePath Path to XSLT file
+	 * @param xsltFilePath The Path to the XSLT file
 	 */
 	public void processEvents(Path xsltFilePath) throws XMLProcessingException {
 		try {
@@ -212,7 +210,7 @@ public class XMLProcessor {
 	}
 
 	/**
-	 * Stops processing events
+	 * Stops processing the events.
 	 */
 	public void stopProcessingEvents() {
 		if (watcher != null) {
@@ -225,7 +223,7 @@ public class XMLProcessor {
 	}
 
 	/**
-	 * Builds a list of XML files, located in predefined directory
+	 * Builds a list of XML files, located in predefined directory.
 	 * 
 	 * @param xmlDirPath The directory where to look for XML files
 	 * @return The list of found XML file paths
@@ -253,7 +251,8 @@ public class XMLProcessor {
 	}
 
 	/**
-	 * Fetches a path to a XSLT file. Should be one XSLT file.
+	 * Fetches a path to a XSLT file. 
+	 * (Note: Should be one XSLT file)
 	 * 
 	 * @param xsltDirPath The directory where to look for XSLT file
 	 * @return The path to the found XSLT file or null if nothing found
@@ -274,13 +273,14 @@ public class XMLProcessor {
 	}
 
 	/**
-	 * Builds a map, containing org.jdom2.Document objects (representing
-	 * transformed XML documents) and last modified time in milliseconds for
+	 * Builds a map that contains org.jdom2.Document objects, which represent
+	 * transformed XML documents, and last modified time in milliseconds for
 	 * each original XML document.
 	 * 
 	 * @param xmlFilePathList The list of XML files' paths
-	 * @param xsltFilePath The path to XSLT file that will be used for transformation
-	 * @return The map with transformed XML documents along with their last modified time
+	 * @param xsltFilePath The path to the XSLT file that will be used for transformation
+	 * @return The map that contains transformed XML documents as keys
+	 * 			and the last modified times of the respective XML document as values
 	 */
 	public Map<Document, Long> buildXmlDocList(List<Path> xmlFilePathList, Path xsltFilePath) {
 		Map<Document, Long> xmlDocList = new HashMap<Document, Long>();
@@ -307,7 +307,7 @@ public class XMLProcessor {
 	}
 	
 	/**
-	 * Check if XMLProcessor is processing events
+	 * Public helper method that checks if XMLProcessor is currently processing events.
 	 */
 	public boolean isProcessingEvents() {
 		return processingEvents;

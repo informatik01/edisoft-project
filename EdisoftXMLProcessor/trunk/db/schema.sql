@@ -74,6 +74,8 @@ WITH (
 ALTER TABLE users
   OWNER TO postgres;
 
-INSERT INTO users (id, first_name, last_name, email, password, salt) VALUES (1, 'Ivan', 'Ivanov', 'ivan.ivanov@mail.ru', 'df15cdb4e7dffcec6a69b90257c5cbd0f630f6d1d5ba0f0c422cf709009644db', 'fc0b2c19d32c66d3f0b53a59f4b8ed4476577396d35bd3b09a174e7b7c21a3cb');
-INSERT INTO users (id, first_name, last_name, email, password, salt) VALUES (2, 'Anton', 'Antonov', 'anton@mail.ru', '2cf45080814af6e513022cbf220afc376afbe965a8d4779714706ba7646a28fb', '6553465d63e2538ce6ce9618adcfb387a2f1e48ef9bd99c8caa4897cae681a2a');
-INSERT INTO users (id, first_name, last_name, email, password, salt) VALUES (4, 'Afanasij', 'Borschov', 'afonja@mail.ru', '784330edcee88f3ad26cb75264b54bcada98381d70a024f474181bfc60cc9485', '7d29161959df3c97e7c63f0265e026a0d8fc507bacb8b5c7e61228d458713ec9');
+  
+-- Ivan Ivanov's password: topsecret
+-- Afanasij Borschov's password: Kareglazaja
+INSERT INTO users (id, first_name, last_name, email, password, salt) VALUES (DEFAULT, 'Ivan', 'Ivanov', 'ivan.ivanov@mail.ru', 'df15cdb4e7dffcec6a69b90257c5cbd0f630f6d1d5ba0f0c422cf709009644db', 'fc0b2c19d32c66d3f0b53a59f4b8ed4476577396d35bd3b09a174e7b7c21a3cb');
+INSERT INTO users (id, first_name, last_name, email, password, salt) VALUES (DEFAULT, 'Afanasij', 'Borschov', 'afonja@mail.ru', '784330edcee88f3ad26cb75264b54bcada98381d70a024f474181bfc60cc9485', '7d29161959df3c97e7c63f0265e026a0d8fc507bacb8b5c7e61228d458713ec9');
