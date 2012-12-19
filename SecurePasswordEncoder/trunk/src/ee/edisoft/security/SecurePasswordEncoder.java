@@ -37,6 +37,14 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.JTextComponent;
 
+/**
+ * SecurePasswordEncoder is a class that represents Swing GUI application.
+ * This application is used to securely encode passwords.
+ * It outputs the salted password hash
+ * along with the respective salt that was used for hashing.<br />
+ * This application uses {@link SecureEncoder} class for the password encoding and salt generation.
+ *
+ */
 public class SecurePasswordEncoder extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -47,7 +55,7 @@ public class SecurePasswordEncoder extends JFrame {
 	private JTextField saltTextField;
 
 	/**
-	 * Launch the application.
+	 * Launches the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -63,13 +71,16 @@ public class SecurePasswordEncoder extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creates the frame.
 	 */
 	public SecurePasswordEncoder() {
 
 		initComponents();
 	}
 	
+	/**
+	 * Initializes GUI application components.
+	 */
 	private void initComponents() {
 		setResizable(false);
 		getContentPane().setPreferredSize(new Dimension(500, 0));
@@ -294,6 +305,12 @@ public class SecurePasswordEncoder extends JFrame {
 		helpMenu.add(aboutMenuItem);
 	}
 	
+	/**
+	 * Helper method to add popup menu.
+	 * 
+	 * @param component The component for which to add mouse listener
+	 * @param popup The JPopupMenu to use within mouse listener
+	 */
 	private static void addPopup(final Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -315,6 +332,9 @@ public class SecurePasswordEncoder extends JFrame {
 		});
 	}
 	
+	/**
+	 * Helper method to show dialog box with the "About" info.
+	 */
 	private void showAboutInfo() {
 		JOptionPane.showMessageDialog(this,
 				"Secure Password Encoder version 1.0\n\n" +
@@ -322,6 +342,14 @@ public class SecurePasswordEncoder extends JFrame {
 				"email: informatik0101@gmail.com", "About Secure Password Encoder", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	/**
+	 * Helper method to get a resource as a {@link File}.
+	 * This application will be distributed as a runnable JAR file and this method
+	 * makes makes it possible to open a resource contained inside this runnable JAR.
+	 * 
+	 * @param name The name of the resourse to represent as a File object
+	 * @return The File object that represents a resource
+	 */
 	private File getResourceAsFile(String name) {
 		File tempFile = null;
 		InputStream in = null;
@@ -355,6 +383,11 @@ public class SecurePasswordEncoder extends JFrame {
 		return tempFile;
 	}
 
+	/**
+	 * Custom event handler for the password text field.
+	 * 
+	 * @param event The event object representing the generated event
+	 */
 	private void passwordTextFieldHandler(ActionEvent event) {
 		String password = passwordTextField.getText().trim();
 		if (password.length() < passwordLength) {
