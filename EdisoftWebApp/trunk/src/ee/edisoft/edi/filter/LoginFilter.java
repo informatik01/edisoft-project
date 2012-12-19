@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class LoginFilter.
+ * Its purpose is to prevent users who are not logged in
+ * from accessing confidential website areas. 
  */
 public class LoginFilter implements Filter {
 
@@ -43,9 +45,6 @@ public class LoginFilter implements Filter {
 	/**
 	 * @see Filter#destroy()
 	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
+	public void destroy() {}
 
 }

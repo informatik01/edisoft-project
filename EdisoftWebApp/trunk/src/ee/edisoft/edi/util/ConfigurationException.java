@@ -1,5 +1,9 @@
 package ee.edisoft.edi.util;
 
+/**
+ * Custom exception class for use within {@link PropertiesUtil} objects.
+ *
+ */
 public class ConfigurationException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;

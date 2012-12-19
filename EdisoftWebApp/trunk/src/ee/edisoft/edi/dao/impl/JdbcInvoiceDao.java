@@ -21,11 +21,9 @@ import ee.edisoft.edi.model.InvoiceRowMapper;
 import ee.edisoft.edi.util.PropertiesUtil;
 
 /**
- * This class represents a concrete JDBC implementation for the
- * {@link InvoiceDAO} interface.
+ * This class represents a JDBC implementation
+ * for the {@link InvoiceDAO} interface.
  * 
- * @author Levan Kekelidze
- * @version 0.2 Alpha
  */
 public class JdbcInvoiceDao implements InvoiceDao {
 
@@ -187,7 +185,7 @@ public class JdbcInvoiceDao implements InvoiceDao {
 
 	@Override
 	public void update(List<Invoice> invoices) throws DaoException {
-		List<String> deleteInvoiceDetailsList = new ArrayList<String>();
+		List<String> invoiceUidsToDelete = new ArrayList<String>();
 
 		Connection con = null;
 		PreparedStatement updateHeader = null;
@@ -237,7 +235,7 @@ public class JdbcInvoiceDao implements InvoiceDao {
 
 				updateHeader.addBatch();
 
-				deleteInvoiceDetailsList.add(invoice.getUid());
+				invoiceUidsToDelete.add(invoice.getUid());
 
 				if (++count % batchSize == 0) {
 					updateHeader.executeBatch();
@@ -258,7 +256,7 @@ public class JdbcInvoiceDao implements InvoiceDao {
 		}
 
 		if (!invoices.isEmpty()) {
-			invoiceDetailsDao.delete(deleteInvoiceDetailsList);
+			invoiceDetailsDao.delete(invoiceUidsToDelete);
 			invoiceDetailsDao.create(invoices);
 		}
 	}
@@ -295,30 +293,24 @@ public class JdbcInvoiceDao implements InvoiceDao {
 	}
 
 	/**
-	 * Helper method to check if a record with the same UID is already present
-	 * in the database
+	 * Helper method to check if a record with the same UID is already present in the database
 	 * 
-	 * @param rs
-	 *            ResultSet of the "SELECT_UID_MODIFIED_SQL"
-	 *            query
-	 * @param invoice
-	 *            Invoice that needs to be checked for presence in the database
-	 * @param updateInvoiceList
-	 *            if record needs to be updated, add current Invoice to this
-	 *            list
+	 * @param rs ResultSet of the "SELECT_UID_MODIFIED_SQL" query
+	 * @param invoice Invoice that needs to be checked for presence in the database
+	 * @param updateInvoiceList if record needs to be updated, add current Invoice to this list
 	 * @return <code>true<code> if a record with the same UID is already present in the database
-	 * @throws SQLException
-	 *             if a database access error occurs or this method is called on
-	 *             a closed result set
+	 * @throws SQLException if a database access error occurs
+	 * 			or this method is called on a closed result set
 	 */
-	private boolean isRecordPresent(ResultSet rs, Invoice invoice, List<Invoice> updateInvoiceList) throws SQLException {
-		if (rs.next()) { // if record with the same UID is already present in database
+	private boolean isRecordPresent(ResultSet rs, Invoice invoice, List<Invoice> updateInvoiceList)
+			throws SQLException {
+		if (rs.next()) { // if record with the same UID is already present in the database
 			if (invoice.getLastModified() != rs.getLong("last_modified")) {
-				// record with the same UID is present but needs to be updated
+				// record with the same UID is present but needs an update
 				updateInvoiceList.add(invoice);
 			}
 			return true;
-		} else { // if record with the same UID is not present in database
+		} else { // if record with the same UID is not present in the database
 			return false;
 		}
 	}

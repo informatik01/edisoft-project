@@ -6,20 +6,11 @@ import java.util.List;
 
 /**
  * Invoice is a JavaBean class, that models
- * Invoice documents in the business domain.
- * Its purpose is to encapsulate data extracted from XML documents.
- * It is also used as a Object-To-XML binding object and as a DTO.
+ * invoice documents in the business domain.
  * 
- * @author Levan Kekelidze
- * @version 0.3 Alpha
  */
 
 public class Invoice implements Serializable {
-	/*
-	 * Using EclipseLink project's MOXy as JAXB provider,
-	 * because it has a very useful extension: XPath
-	 * 
-	 */
 
 	private static final long serialVersionUID = 1L;
 

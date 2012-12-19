@@ -2,6 +2,11 @@ package ee.edisoft.edi.model;
 
 import java.io.Serializable;
 
+/**
+ * User is a JavaBean class, that models
+ * a user in the business domain.
+ *
+ */
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;

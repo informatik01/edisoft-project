@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class LogoutServlet.
+ * Its purpose is to log out a user.
  */
 public class LogoutServlet extends HttpServlet {
 	

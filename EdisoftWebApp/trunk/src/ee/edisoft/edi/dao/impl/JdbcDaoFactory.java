@@ -15,6 +15,10 @@ import ee.edisoft.edi.dao.util.DataSourceConnectionManager;
 import ee.edisoft.edi.dao.util.DriverManagerConnectionManager;
 import ee.edisoft.edi.util.ConfigurationException;
 
+/**
+ * {@link DaoFactory} implementation that utilizes JDBC
+ *
+ */
 public class JdbcDaoFactory extends DaoFactory {
 
 	private static final Logger logger = Logger.getLogger(JdbcDaoFactory.class);

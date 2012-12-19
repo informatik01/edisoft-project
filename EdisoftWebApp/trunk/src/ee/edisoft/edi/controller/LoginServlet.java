@@ -14,7 +14,8 @@ import ee.edisoft.edi.model.User;
 import ee.edisoft.security.SecureEncoder;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class LoginServlet.
+ * Its purpose is to control log in process.
  */
 public class LoginServlet extends HttpServlet {
 	
@@ -37,13 +38,13 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("username").trim();
 		String submittedPassword = request.getParameter("password");
 		String submittedPasswordHash = null;
-		String fetchedPasswordHash = null;
+		String passwordHash = null;
 		
 		User user = userDao.read(email);
 		
 		if (user != null) {
 			String salt = user.getSalt();
-			fetchedPasswordHash = user.getPassword();
+			passwordHash = user.getPassword();
 			
 			try {
 				submittedPasswordHash = SecureEncoder.computeHash(submittedPassword, salt);
@@ -52,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 		
-		if (submittedPasswordHash != null && submittedPasswordHash.equalsIgnoreCase(fetchedPasswordHash)) {
+		if (submittedPasswordHash != null && submittedPasswordHash.equalsIgnoreCase(passwordHash)) {
 			request.getSession().setAttribute("loggedInUser", user);
 			request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
 			

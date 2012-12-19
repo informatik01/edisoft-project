@@ -5,56 +5,56 @@ import java.util.List;
 import ee.edisoft.edi.model.Invoice;
 
 /**
- * This interface represents a contract for the Data Access Object. 
- * 
- * @author Levan Kekelidze
- * @version 0.2 Alpha
- *
+ * Interface to abstract access to the data source for the invoice documents.
+ * Using Data Access Object pattern.
  */
 public interface InvoiceDao {
 	
 	/**
-	 * Creates records, extracted from {@link Invoice} objects, 
-	 * in both 'header' and 'details' tables.
+	 * Creates invoice related records for the specified invoices in the appropriate data source.
 	 * 
-	 * @param docList The list of {@link Invoice} objects that serve as a data source
-	 * @throws DaoException to hide implementation details
+	 * @param invoices The list of {@link Invoice} objects for which to create records
+	 * @throws DaoException if something goes wrong at Data Access layer
 	 */
 	public void create(List<Invoice> invoices) throws DaoException;
 	
 	/**
-	 * Reads record with specified UID from 'header' table
+	 * Reads an invoice related record with specified UID from the appropriate data source.
 	 * 
-	 * @return Invoice object that encapsulates 'header' table record
-	 * @throws DaoException to hide implementation details
+	 * @param uid The UID of the invoice whose data to read
+	 * @return Invoice object that encapsulates the appropriate data source record
+	 * @throws DaoException if something goes wrong at Data Access layer
 	 */
 	public Invoice read(String uid) throws DaoException;
 	
 	/**
-	 * Reads records from 'header' table
+	 * Reads all invoice related records from the appropriate data source.
 	 * 
-	 * @return The list of {@link Invoice} objects that encapsulate 'header' table records
-	 * @throws DaoException to hide implementation details
+	 * @return List of all {@link Invoice} objects whose records are stored in the data source
+	 * @throws DaoException if something goes wrong at Data Access layer
 	 */
 	public List<Invoice> readAll() throws DaoException;	
 	
 	/**
-	 * Updates records in 'header' table
+	 * Updates invoice related records in the appropriate data source.
 	 * 
-	 * @param docList The list of {@link Invoice} objects that serve as a data source
-	 * @throws DaoException to hide implementation details
+	 * @param invoices The list of {@link Invoice} objects whose records need an update
+	 * @throws DaoException if something goes wrong at Data Access layer
 	 */
 	public void update(List<Invoice> invoices) throws DaoException;
 
 	/**
-	 * Deletes a record with specified UID from 'heade'r and, as a result of cascading, 'details' tables
-	 * @throws DaoException to hide implementation details
+	 * Deletes an invoice related record with specified UID from the appropriate data source.
+	 * 
+	 * @param uid The UID of the invoice whose record to delete
+	 * @throws DaoException if something goes wrong at Data Access layer
 	 */
 	public void delete(String uid) throws DaoException;
 	
 	/**
-	 * Deletes all records from 'header' and, as a result of cascading, 'details' tables
-	 * @throws DaoException to hide implementation details
+	 * Deletes all invoice related records from the appropriate data source.
+	 * 
+	 * @throws DaoException if something goes wrong at Data Access layer
 	 */
 	public void deleteAll() throws DaoException;
 

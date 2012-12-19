@@ -19,6 +19,11 @@ import ee.edisoft.edi.util.PropertiesUtil;
 
 import ee.edisoft.security.SecureEncoder;
 
+/**
+ * This class represents a JDBC implementation
+ * for the {@link UserDAO} interface.
+ *
+ */
 public class JdbcUserDao implements UserDao {
 	
 	private static final Logger logger = Logger.getLogger(JdbcUserDao.class);
@@ -54,7 +59,7 @@ public class JdbcUserDao implements UserDao {
 	}
 
 	@Override
-	public int create(User user) {
+	public int create(User user) throws DaoException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		PreparedStatement findEmail = null;
@@ -171,7 +176,7 @@ public class JdbcUserDao implements UserDao {
 		}
 		
 		/*
-		 * At this point we have two variants:
+		 * At this point we are going have two variants:
 		 * 1) oldUser == null, if none of the users has the updated email, or
 		 * 2) oldUser is an existing user and his email was not updated,
 		 * 	  so we don't have to use fetchOldUser

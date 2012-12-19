@@ -5,10 +5,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * This is a utility class to help load properties files.
+ * This is a utility class to ease retrieving data from properties files.
  * 
- * @author Levan Kekelidze
- * @version 0.2 Alpha
  */
 public class PropertiesUtil {
 	

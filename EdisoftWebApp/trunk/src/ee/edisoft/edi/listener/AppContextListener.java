@@ -10,7 +10,10 @@ import ee.edisoft.edi.dao.InvoiceDao;
 import ee.edisoft.edi.dao.UserDao;
 
 /**
- * Application Lifecycle Listener implementation class AppContextListener
+ * Application Lifecycle Listener implementation class AppContextListener.
+ * Its purpose is to get the appropriate DAO objects and
+ * store them in the application context (ServletContext)
+ * for the application wide access.
  *
  */
 @WebListener

@@ -18,6 +18,11 @@ import ee.edisoft.edi.model.InvoiceDetails;
 import ee.edisoft.edi.model.InvoiceDetailsRowMapper;
 import ee.edisoft.edi.util.PropertiesUtil;
 
+/**
+ * This class represents a JDBC implementation
+ * for the {@link InvoiceDetailsDAO} interface.
+ *
+ */
 public class JdbcInvoiceDetailsDao implements InvoiceDetailsDao {
 
 	private static final Logger logger = Logger.getLogger(JdbcInvoiceDetailsDao.class);
@@ -106,7 +111,7 @@ public class JdbcInvoiceDetailsDao implements InvoiceDetailsDao {
 	}
 
 	@Override
-	public void delete(List<String> invoiceUidList) throws DaoException {
+	public void delete(List<String> invoiceUids) throws DaoException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
@@ -116,7 +121,7 @@ public class JdbcInvoiceDetailsDao implements InvoiceDetailsDao {
 
 			int batchSize = 100;
 			int count = 0;
-			for (String uid : invoiceUidList) {
+			for (String uid : invoiceUids) {
 				ps.setString(1, uid);
 				ps.addBatch();
 

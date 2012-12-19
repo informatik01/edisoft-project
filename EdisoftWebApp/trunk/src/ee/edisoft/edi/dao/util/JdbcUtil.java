@@ -5,6 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Utility class that helps reduce JDBC related boilerplate code.
+ *
+ */
 public class JdbcUtil {
 	
 	public static void closeResultSet(ResultSet rs) {

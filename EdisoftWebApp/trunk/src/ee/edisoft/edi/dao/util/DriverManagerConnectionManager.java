@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
+/**
+ * {@link ConnectionManager} implementation that uses {@link DriverManager}
+ * for getting a {@link Connection}.
+ */
 public class DriverManagerConnectionManager implements ConnectionManager {
 
 	private String url;

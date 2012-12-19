@@ -3,6 +3,10 @@ package ee.edisoft.edi.dao;
 import ee.edisoft.edi.dao.impl.JdbcDaoFactory;
 import ee.edisoft.edi.util.PropertiesUtil;
 
+/**
+ * Factory class to absctract the creation of different DAO implementations.
+ * Using Abstract Factory pattern.
+ */
 public abstract class DaoFactory {
 
 	private static final String CONFIG_FILE = "jdbc.properties";

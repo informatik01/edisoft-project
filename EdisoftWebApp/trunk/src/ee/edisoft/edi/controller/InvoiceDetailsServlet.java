@@ -14,7 +14,10 @@ import ee.edisoft.edi.dao.InvoiceDao;
 import ee.edisoft.edi.model.Invoice;
 
 /**
- * Servlet implementation class InvoiceDetailsServlet
+ * Servlet implementation class InvoiceDetailsServlet.
+ * Its main purpose is to fetch concrete Invoice record from Data Tier
+ * by help of DAO object and forward it to the concrete View.
+ * The specified View will use fetched data to output concrete Invoice's details.
  */
 public class InvoiceDetailsServlet extends HttpServlet {
 	

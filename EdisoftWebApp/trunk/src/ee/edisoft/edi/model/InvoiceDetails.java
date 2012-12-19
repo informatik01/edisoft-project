@@ -5,21 +5,10 @@ import java.math.BigDecimal;
 
 /**
  * InvoiceDetails is a JavaBean class, that models
- * Invoice document's details in the business domain.
- * Its purpose is to encapsulate data details extracted from XML documents.
- * It is also used as a Object-To-XML binding object and as a DTO.
+ * invoice document's details in the business domain.
  * 
- * @author Levan Kekelidze
- * @version 0.2 Alpha
  */
 public class InvoiceDetails implements Serializable {
-	/*
-	 * Using EclipseLink project's MOXy as JAXB provider,
-	 * because it has a nice extension: XPath
-	 * 
-	 * NB!	Pay attention to jaxb.properties file in this package.
-	 * 		It is required for MOXy to work.
-	 */
 	
 	private static final long serialVersionUID = 1L;
 

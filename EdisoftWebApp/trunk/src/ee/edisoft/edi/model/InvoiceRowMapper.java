@@ -9,11 +9,9 @@ import java.util.List;
 
 /**
  * This class represents a custom database table row mapper.
- * Its main purpose to map rows returned as query result
+ * Its purpose is to map rows returned as a result of a SQL query
  * to the appropriate {@link Invoice} object's fields.
  * 
- * @author Levan Kekelidze
- * @version 0.2 Alpha
  */
 public class InvoiceRowMapper {
 
