@@ -24,6 +24,7 @@
 		<copy todir="${dist.dir}">
 			<fileset dir="${build.dir}" />
 		</copy>
+		<copy file="run-app.bat" todir="${dist.dir}" />
 		<copy todir="${dist.dir}/lib">
 			<fileset dir="${lib.dir}">
 				<exclude name="src/"/>
@@ -46,6 +47,7 @@
 		<delete includeemptydirs="true">
 			<fileset dir="${dist.dir}">
 				<exclude name="*.jar" />
+				<exclude name="*.bat" />
 				<exclude name="lib/" />
 			</fileset>
 		</delete>
@@ -56,9 +58,9 @@
 		NB! Use Ctrl+C to properly close application
 			(so that ShutdownHook gets executed)
 	-->
-	<target name="start-app" description="Starts Main Application">
-		<exec dir="." executable="${terminal}" os="${os}">
-			<arg line="${start.app.arg}" />
+	<target name="run-app" description="Runs Main Application">
+		<exec dir="dist" executable="${terminal}" os="${os}">
+			<arg line="${run.app.arg}" />
 		</exec>
 	</target>
 	
