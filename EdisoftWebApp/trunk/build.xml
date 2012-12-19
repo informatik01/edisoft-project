@@ -24,9 +24,7 @@
 	<target name="webapp-init" description="Create webapp directory structure">
 		<copy todir="${dist.dir}">
 			<fileset dir="${web.dir}">
-				<exclude name="**/*source*" />
-				<exclude name="**/*src*" />
-				<exclude name="**/*doc*" />
+				<exclude name="**/src/**" />
 			</fileset>
 		</copy>
 		<copy todir="${dist.dir}/WEB-INF">
