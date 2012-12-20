@@ -17,7 +17,7 @@ security in order to be more portable. Plus it uses salted password hashes and
 at the moment it was more intuitive and effective to use programmatic security.
 The only container based security measure is configuration in the web.xml
 file that controls data confidentiality and integrity by forcing use of HTTPS
-protocol with predefined URLs. (see <transport-guarantee> in web.xml)
+protocol with predefined URLs (see <transport-guarantee> in web.xml).
 
 In order to utilize HTTPS protocol you need to generate certificate keystore
 using the Java keytool command-line utility and make the appropriate changes
@@ -27,6 +27,12 @@ http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html
 -------------------------------------------------------------------------------
 
 HOW TO USE
+-------------------------------------------------------------------------------
+Just copy the WAR archive EdisoftWebApp.war contained in the "dist" folder to
+the $CATALINA_HOME/webapps directory and start the Apache Tomcat server.
+-------------------------------------------------------------------------------
+
+DETAILS
 -------------------------------------------------------------------------------
 This application is supposed to be deployed to the Apache Tomcat server.
 It uses PostgreSQL database server as a Data Layer. In order to successfully use
@@ -41,16 +47,22 @@ Before running this web application see README.txt file in the EdisoftXMLProcess
 project for the details related to all the preparations required to successfully
 populate the database tables with the invoice documents' data.
 
-Just copy the WAR archive EdisoftWebApp.war contained in the "dist" folder to
-the $CATALINA_HOME/webapps directory and start the Apache Tomcat server.
-
 In the EdisoftXMLProcessor project "db" folder there a "schema" SQL script.
 Look for the part that creates "users" table and insert the appropriate data.
-Feel free to modify them as needed.
+You must store not raw passwords, but salted password hashes. There is special
+field for the salt used to encode the related password. You can use Secure 
+Password Encoder application to encode passwords and get salted password hash and
+the salt. Secure Password Encoder can be found in the SecurePasswordEncoder
+project. See the "dist" folder inside the SecurePasswordEncoder for the executable
+JAR file.
 
-You must supply the coorect login and password to acces restricted admin area.
+You may want to configure some details of this web application using properties
+files found inside WAR archive in WEB-INF/Classes directory. For instance to
+configure logging use log4j.properties found there and s.o.
+
+You must supply the correct login and password to access restricted admin area.
 When you log in, click in the above menu on "Manage Documents" to see the list
-of all currently availbale invoice data. You can sort it by clicking on the column
+of all currently available invoice data. You can sort it by clicking on the column
 headers, see more or less records using pagination menu. You can see the details
 related to the concrete invoice by clicking on any of the table's rows.
 -------------------------------------------------------------------------------
