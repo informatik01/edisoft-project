@@ -38,6 +38,8 @@ In order to run the application follow these steps:
 	name "edisoft".
 	File "schema.sql" contains SQL script to create tables "header" and
 	"details" (table "users" is not used with XMLProcessor, but with the web app).
+	In the "resources" folder there are two properties files - "header_sql.properties"
+	and "detaisl_sql.properties" that contain SQL queries used in the application.
 	You can use another database (i.e. MySQL, Oracle), but check with the
 	respective DBMS documentation and make the appropriate changes.
 	
