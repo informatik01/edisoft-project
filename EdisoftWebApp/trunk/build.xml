@@ -30,6 +30,7 @@
 		<copy todir="${dist.dir}/WEB-INF">
 			<fileset dir="${build.dir}" />
 		</copy>
+		<copy file="${readme.file}" todir="${dist.dir}" />
 	</target>
 	
 	<target name="war" depends="build, webapp-init" description="Create Web Application Archive">

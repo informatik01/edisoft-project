@@ -7,7 +7,7 @@
 		</div>
 		<div id="signin-info">
 			<ul>
-				<li class="logout"><a href="<c:url value="/Logout.do" />"> Sign Out</a></li>
+				<li class="logout"><a href="<c:url value="/Logout.do" />"> Log Out</a></li>
 				<li style="float: right; margin-right: 10px;">|</li>
 				<li class="user-name">Welcome, ${loggedInUser.firstName}!</li>
 			</ul>
