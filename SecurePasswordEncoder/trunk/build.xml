@@ -3,6 +3,7 @@
 	<property name="src.dir" value="src" />
 	<property name="build.dir" value="bin" />
 	<property name="dist.dir" value="dist" />
+	<property name="readme.file" value="README.txt" />
 
 	<target name="build" depends="clean" description="Build project">
 		<javac srcdir="${src.dir}" destdir="${build.dir}" debug="on" includeAntRuntime="false">
@@ -14,7 +15,7 @@
 		<copy todir="${dist.dir}">
 			<fileset dir="${build.dir}" />
 		</copy>
-		<copy file="README.txt" todir="${dist.dir}" />
+		<copy file="${readme.file}" todir="${dist.dir}" />
 	</target>
 	
 	<target name="dist" depends="pre-dist" description="Create Runnable JAR file">
