@@ -1,8 +1,8 @@
 This application is a Secure Password Encoder.
 
 It takes some password provided by a user,
-generates a cryptographically strong random number (salt),
-and hashes the salted password using SHA-256 algorithm.
+generates a cryptographically strong random number for the salt,
+and hashes the salted password using Secure Hash Algorithm (SHA).
 
 Salted password hash along with the salt can be stored in a
 database and used, for example, as part of a web application

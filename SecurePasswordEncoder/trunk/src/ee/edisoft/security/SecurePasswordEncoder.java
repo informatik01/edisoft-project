@@ -142,12 +142,12 @@ public class SecurePasswordEncoder extends JFrame {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(inputPanel, 500, 599, Short.MAX_VALUE)
 						.addComponent(lblHeader, GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
-						.addComponent(btnEncode, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
 						.addComponent(resultPanel, 500, 599, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnClearFields, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
-							.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(btnClearFields, GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+							.addGap(368)
+							.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnEncode, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -169,6 +169,7 @@ public class SecurePasswordEncoder extends JFrame {
 		);
 		
 		JLabel lblPasswordHash = new JLabel("Salted Password Hash");
+		lblPasswordHash.setPreferredSize(new Dimension(150, 16));
 		lblPasswordHash.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		
 		hashTextField = new JTextField();
@@ -181,6 +182,7 @@ public class SecurePasswordEncoder extends JFrame {
 		hashTextField.setColumns(64);
 		
 		JLabel lblSalt = new JLabel("Salt used for the Password");
+		lblSalt.setPreferredSize(new Dimension(150, 16));
 		lblSalt.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		
 		saltTextField = new JTextField();
@@ -199,8 +201,8 @@ public class SecurePasswordEncoder extends JFrame {
 					.addGroup(gl_resultPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(hashTextField, GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
 						.addComponent(saltTextField, GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
-						.addComponent(lblPasswordHash, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblSalt, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblSalt, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblPasswordHash, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		gl_resultPanel.setVerticalGroup(
