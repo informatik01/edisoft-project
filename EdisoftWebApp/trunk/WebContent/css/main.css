@@ -161,8 +161,12 @@
 }
 /********** end of Sign-in info panel **********/
 
+
+
+
 /********** Documents related styles **********/
 table.document {
+	table-layout: fixed;
 	width: 100%;
 	border: medium solid black;
 	border-collapse: collapse;
@@ -189,6 +193,7 @@ table.document td {
 	border-right: 1px dotted black;
 	font-family: monospace;
 	font-size: 0.9em;
+	word-wrap: break-word;
 }
 
 table.document a {
@@ -197,6 +202,10 @@ table.document a {
 	height: 100%;
 	line-height: 3em;
 	padding-left: 5px;
+}
+
+.wide {
+	width: 250px;
 }
 /********** end of Documents related styles **********/
 

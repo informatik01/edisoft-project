@@ -31,7 +31,9 @@
 			</c:if>
 
 			<table class="document tablesorter">
-				<col class="wide" />
+				<colgroup>
+					<col class="wide"/>
+				</colgroup>
 				<thead>
 					<tr class="header">
 						<th>Document UID</th>
