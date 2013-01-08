@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+
+/********** Login Form **********/
+.login {
+	font-family: Tahoma, sans-serif;
+}
+
+#login-form {
+	width: 40%;
+	margin-left: 30%;
+	margin-top: 50px;
+	font-size: 1.8em;
+}
+
+#login-form fieldset {
+	margin: 10px;
+	padding: 20px;
+	min-width: 450px;
+	line-height: 0.5em;
+	background: #F0F0F0;
+}
+
+#login-form input[type="text"], input[type="password"] {
+	margin: 10px 0 10px 10px;
+	padding-left: 2px;
+	height: 25px;
+	width: 98%;
+	border-width: 1px;
+	border-color: #0000FF;
+	//font-size: 14px;;
+}
+
+#login-form input[type="submit"] {
+	margin: 5px 0 0 10px;
+	width: 100px;
+	height: 35px;
+	font-size: 0.5em;
+}
+
+#login-form table {
+	width: 95%;
+	line-height: 1em;
+}
+
+#login-form table th {
+	width: 40%;
+	font-size: 0.9em;
+	font-weight: normal;
+	text-align: right;
+}
+
+#login-form table td {
+	//padding: 0;
+}
+
+#login-error {
+	margin: 2px;
+	padding-left: 40%;
+	width: 95%;
+	color: #FF0000;
+	font-size: 0.7em;
+}
+
+/********** end Login Form **********/

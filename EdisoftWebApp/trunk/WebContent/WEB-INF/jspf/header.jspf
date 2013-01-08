@@ -5,7 +5,7 @@
 				<img src="<c:url value="/img/logo.png" />" alt="Edisoft" />
 			</a>
 		</div>
-		<div id="signin-info">
+		<div id="login-info">
 			<ul>
 				<li class="logout"><a href="<c:url value="/Logout.do" />"> Log Out</a></li>
 				<li style="float: right; margin-right: 10px;">|</li>

@@ -17,54 +17,54 @@
 			<h4>There are currently no Invoice document in the database.</h4>
 		</c:if>
 		
-		<form id="invoice-form">
+		<div id="invoice-details">
 			<table>
 				<caption>Invoice header</caption>
 				<tr>
 					<th>Document UID</th>
 					<td><input  type="text" id="uid" value="${invoice.uid}" disabled="disabled"/></td>
 					<th>Document Type</th>
-					<td><input  type="text" id="uid" value="${invoice.documentType}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.documentType}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Receiver System Type</th>
-					<td><input  type="text" id="uid" value="${invoice.receiverSystemType}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.receiverSystemType}" readonly="readonly" /></td>
 					<th>Document Number</th>
-					<td><input  type="text" id="uid" value="${invoice.documentNumber}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.documentNumber}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Document Date1</th>
 					<td><input  type="text" id="uid"
-						value="<fmt:formatDate value="${invoice.documentDate1}" pattern="dd/MM/yyy" />" />
+						value="<fmt:formatDate value="${invoice.documentDate1}" pattern="dd/MM/yyy" />" readonly="readonly" />
 					</td>
 					<th>Document Date2</th>
 					<td><input  type="text" id="uid"
-						value="<fmt:formatDate value="${invoice.documentDate2}" pattern="dd/MM/yyy" />" />
+						value="<fmt:formatDate value="${invoice.documentDate2}" pattern="dd/MM/yyy" />" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
 					<th>Sender ILN</th>
-					<td><input  type="text" id="uid" value="${invoice.senderILN}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.senderILN}" readonly="readonly" /></td>
 					<th>Sender Code by Receiver</th>
-					<td><input  type="text" id="uid" value="${invoice.senderCodeByReceiver}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.senderCodeByReceiver}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Sender Name</th>
-					<td><input  type="text" id="uid" value="${invoice.senderName}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.senderName}" readonly="readonly" /></td>
 					<th>Sender Address</th>
-					<td><input  type="text" id="uid" value="${invoice.senderAddress}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.senderAddress}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Receiver ILN</th>
-					<td><input  type="text" id="uid" value="${invoice.receiverILN}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.receiverILN}" readonly="readonly" /></td>
 					<th>Receiver Code by Receiver</th>
-					<td><input  type="text" id="uid" value="${invoice.receiverCodeByReceiver}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.receiverCodeByReceiver}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Receiver Name</th>
-					<td><input  type="text" id="uid" value="${invoice.receiverName}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.receiverName}" readonly="readonly" /></td>
 					<th>Receiver Address</th>
-					<td><input  type="text" id="uid" value="${invoice.receiverAddress}" /></td>
+					<td><input  type="text" id="uid" value="${invoice.receiverAddress}" readonly="readonly" /></td>
 				</tr>
 			</table>
 		<br />
@@ -74,28 +74,28 @@
 		<table>
 				<tr>
 					<th>Line Number</th>
-					<td><input type="text" value="${detail.lineNumber}" /></td>
+					<td><input type="text" value="${detail.lineNumber}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Supplier Item Code</th>
-					<td><input type="text" value="${detail.supplierItemCode}" /></td>
+					<td><input type="text" value="${detail.supplierItemCode}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Item Description</th>
-					<td><input type="text" value="${detail.itemDescription}" /></td>
+					<td><input type="text" value="${detail.itemDescription}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Invoice Quantity</th>
-					<td><input type="text" value="${detail.invoiceQuantity}" /></td>
+					<td><input type="text" value="${detail.invoiceQuantity}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th>Invoice Unit Net Price</th>
-					<td><input type="text" value="${detail.invoiceUnitNetPrice}" /></td>
+					<td><input type="text" value="${detail.invoiceUnitNetPrice}" readonly="readonly" /></td>
 				</tr>
 		</table>
 		<hr />
 		</c:forEach>
-		</form>
+		</div>
 	</div>
 	<button onclick="history.back()">Back to List of all Invoices</button>
 	<%@ include file="/WEB-INF/jspf/footer.jspf"%>

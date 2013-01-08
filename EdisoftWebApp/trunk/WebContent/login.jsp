@@ -6,6 +6,7 @@
 <title>Administrator Login</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="<c:url value="/css/main.css" />" />
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/login.css" />" />
 </head>
 <body>
 	<div class="login" style="margin-left: 30%">
