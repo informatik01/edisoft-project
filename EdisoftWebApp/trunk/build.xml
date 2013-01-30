@@ -15,7 +15,6 @@
 			<classpath refid="project.classpath" />
 			<compilerarg value="-Xlint:none" />
 		</javac>
-		<!-- Copying all properties files to classpath -->
 		<copy todir="${build.dir}/classes">
 			<fileset dir="${resource.dir}" />
 		</copy>
