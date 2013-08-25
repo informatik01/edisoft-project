@@ -56,7 +56,6 @@ public class LoginServlet extends HttpServlet {
 		if (submittedPasswordHash != null && submittedPasswordHash.equalsIgnoreCase(passwordHash)) {
 			request.getSession().setAttribute("loggedInUser", user);
 			request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
-			
 		} else {
 			request.setAttribute("errorMessage", "Invalid username or password");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);

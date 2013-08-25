@@ -41,7 +41,6 @@ public class LoginFilter implements Filter {
 		}
 	}
 
-
 	/**
 	 * @see Filter#destroy()
 	 */
