@@ -1,8 +1,8 @@
-EdisoftXMLProcessor is a Java SE command line application.
+EdisoftXMLProcessor is a Java console application.
 
 DESCRIPTION
 -------------------------------------------------------------------------------
-The application's main purpose is to process XML files that represent
+The main purpose of this application is to process XML files that represent
 invoice documents and populate a database with the related records.
 
 At the start the application first scans the predefined directory for XML files
