@@ -10,7 +10,7 @@ import java.util.Properties;
  */
 public class PropertiesUtil {
 	
-	private static final Properties properties = new Properties();
+	private Properties properties = new Properties();
 	private String configFileName;
 
 	public PropertiesUtil(String configFileName) throws ConfigurationException {
