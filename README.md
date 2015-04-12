@@ -1,6 +1,3 @@
-# edisoft-project
-Java SE desktop XML/XSLT processor and Java EE web client
-
 There are three Java projects in the repository:
  * *EdisoftXMLProcessor* (Java SE desktop console application)
  * *EdisoftWebApp* (Java EE web application)
