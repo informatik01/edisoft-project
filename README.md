@@ -1,4 +1,5 @@
-<h4>NOTE</h4>
+<strong>NOTE</strong>
+<br />
 *This project was created as an assignment. The original description in Russian can be found in the file [test_exercise_original_description_rus.txt](test_exercise_original_description_rus.txt)*
 
 There are three Java projects in the repository:
