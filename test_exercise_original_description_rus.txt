@@ -1,0 +1,67 @@
+NOTE: The below text is the original description of the
+test exercise as it was received from Edisoft Baltic OÜ. 
+========================================================
+
+Задание.
+----------------------------
+Бизнес-проблема.
+1. Нужно принимать XML-документы от клиентов, трансформировать в нужный формат и
+   сохранять в таблицы для дальнейшего импорта в складскую программу. 
+2. Также нужно иметь возможность просмотреть пришедшие документы в веб-приложении.
+
+Требования.
+1. Язык реализации - Java.
+2. Platform independent.
+3. В результате должен быть как исходный код, так и готовое к использованию приложение.
+4. Результат отсылается архивом на эмайл: jobs@edisoft.ee
+
+
+Возможное решение.
+----------------------------
+Необходимо написать программу на Java, которая бы преобразовывала входящий XML с помощью XSLT и
+сохраняла бы поля трансформированного XML в базу данных PostgreSQL.
+Шапку документа (DocumentSettings, Sender, Receiver) в таблицу header,
+детали (Invoice-Lines) в таблицу details. 
+
+Поля header:
+DocumentType
+ReceiverSystemType
+DocumentNumber
+DocumentDate1
+DocumentDate2
+
+SenderILN
+SenderCodeByReceiver
+SenderName
+SenderAddress
+
+ReceiverILN
+ReceiverCodeByReceiver
+ReceiverName
+ReceiverAddress
+
+Поля details:
+LineNumber
+SupplierItemCode
+ItemDescription
+InvoiceQuantity
+InvoiceUnitNetPrice
+
+Затем нужно создать веб-часть, с помощью которой выводился бы список полей из таблицы header,
+с возможностями сортировки. При клике на линию шапки, открывалась бы форма с линиями из таблицы details.
+
+Трансформация и импорт должны происходить в автоматическом режиме из папки с входящими XML.
+Отдельная папка для XSLT. 
+Можно использовать JBoss application server, Tomcat или то, что посчитаете нужным.
+
+Главное - показать подход, архитектуру, качество кода и готовое решение,
+которое можно было бы быстро запустить на любой стационарной платформе.
+
+
+Входящие XML:
+standard_INVOICE_109189.xml
+standard_INVOICE_110003.xml 
+standard_INVOICE_110187.xml
+
+Трансформация XSLT:
+INVOIC_edisoft2initial_view_1c.xsl
